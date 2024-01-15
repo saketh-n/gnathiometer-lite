@@ -20,7 +20,7 @@ export const NavButton = (props: {
   return (
     <button
       style={style}
-      className={`bg-cover bg-center h-[360px] w-[360px] text-2xl rounded-md`}
+      className={`bg-cover bg-center h-[360px] w-[360px] text-2xl rounded-3xl`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
