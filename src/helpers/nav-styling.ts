@@ -1,33 +1,36 @@
-// / Helpful methods for the styling of the NavButton component
+// / Helpful methods & objects for the styling of the NavButton component
+
+// Map prefix to scaling coefficient
+export const prefixToScale: Record<string, number> = {
+  sm: 5,
+  md: 6,
+  lg: 7,
+  xl: 8,
+  "2xl": 9,
+};
+
+// Map prefix to text-scale
+export const prefixToTextScale: Record<string, string> = {
+  sm: "xl",
+  md: "2xl",
+  lg: "3xl",
+  xl: "4xl",
+  "2xl": "5xl",
+};
+
+// How much to scale the buttons by per screen size
+export const buttonCoeff = 60;
 
 /**
  * Dynamically generates tailwind css for a given screen size
  * @param prefix [sm, md ...] - what screen size to generate a responsive styling for
  * @returns tailwind css as a string literal for the given prefix screen size
  */
-const responsiveStyling = (prefix: string): string => {
-  // Map prefix to scaling coefficient
-  const prefixToScale: Record<string, number> = {
-    sm: 5,
-    md: 6,
-    lg: 7,
-    xl: 8,
-    "2xl": 9,
-  };
-
-  // Map prefix to text-scale
-  const prefixToTextScale: Record<string, string> = {
-    sm: "xl",
-    md: "2xl",
-    lg: "3xl",
-    xl: "4xl",
-    "2xl": "5xl",
-  };
-
+export const responsiveStyling = (prefix: string): string => {
   let styling = ``;
 
   if (prefix in prefixToScale) {
-    const buttonSideLength = 60 * prefixToScale[prefix];
+    const buttonSideLength = buttonCoeff * prefixToScale[prefix];
     styling += ` ${prefix}:h-[${buttonSideLength}px]`;
     styling += ` ${prefix}:w-[${buttonSideLength}px]`;
   }
