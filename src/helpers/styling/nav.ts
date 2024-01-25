@@ -1,4 +1,8 @@
-// / Helpful methods & objects for the styling of the NavButton component
+/**
+ * @fileOverview Helpful methods & objects for the styling of the NavButton component
+ */
+
+import { generateButtonStyle } from "./button";
 
 // Map prefix to scaling coefficient
 export const prefixToScale: Record<string, number> = {
@@ -23,8 +27,8 @@ export const buttonCoeff = 60;
 
 /**
  * Dynamically generates tailwind css for a given screen size
- * @param prefix [sm, md ...] - what screen size to generate a responsive styling for
- * @returns tailwind css as a string literal for the given prefix screen size
+ * @param {string} prefix [sm, md ...] - what screen size to generate a responsive styling for
+ * @returns {string} tailwind css as a string literal for the given prefix screen size
  */
 export const responsiveStyling = (prefix: string): string => {
   let styling = ``;
@@ -44,9 +48,9 @@ export const responsiveStyling = (prefix: string): string => {
 
 /**
  * Generates inline CSS Styling for the NavButton
- * @param img path to the image you want to use for the NavButton background
- * @param hover whether or not the button is being hovered over
- * @returns  inline CSS Styling for the NavButton
+ * @param {string} img path to the image you want to use for the NavButton background
+ * @param {boolean} hover whether or not the button is being hovered over
+ * @returns {React.CSSProperties} inline CSS Styling for the NavButton
  */
 export const generateStyle = (
   img: string,
@@ -54,14 +58,13 @@ export const generateStyle = (
 ): React.CSSProperties => {
   return {
     backgroundImage: `url(${img})`,
-    filter: hover ? "brightness(50%)" : "brightness(100%)",
-    transition: "filter 0.3s ease",
+    ...generateButtonStyle(hover),
   };
 };
 
 /**
  *
- * @returns the tailwind css string literal for styling the NavButton
+ * @returns {string} the tailwind css string literal for styling the NavButton
  */
 export const generateTailwindStyling = (): string => {
   let tailwindStyling = `bg-cover bg-center h-[240px] w-[240px] text-lg rounded-3xl`;
