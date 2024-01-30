@@ -40,7 +40,7 @@ export const PatientImage = ({
   // TODO: Draggable motion is jerky. Fix
   return (
     <Draggable nodeRef={nodeRef}>
-      <div ref={nodeRef}>
+      <div ref={nodeRef} className="flex-no-resize">
         <img src={img} alt="Patient" style={imageStyle} />
       </div>
     </Draggable>
