@@ -11,6 +11,7 @@ export const GrowthGuide = (): React.JSX.Element => {
   const guideStyle: React.CSSProperties = {
     position: "relative",
     zIndex: 1000,
+    pointerEvents: "none",
   };
   return <img src={guide} alt="Growth Guide" style={guideStyle} />;
 };

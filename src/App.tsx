@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { UploadGrowth } from "./pages/UploadGrowth";
+import { MeasureGrowth } from "./pages/MeasureGrowth";
 
 // Only for testing
 type AppProps = {
@@ -33,6 +34,7 @@ export const App = ({
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/upload-growth" element={<UploadGrowth />} />
+        <Route path="/measure-growth" element={<MeasureGrowth />} />
       </Routes>
     </RouterComponent>
   );

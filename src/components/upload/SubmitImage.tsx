@@ -52,7 +52,7 @@ export const SubmitImage = ({
   };
 
   const tailwindStyle =
-    "bg-gray-200 border-gray-300 lg:px-32 py-12 text-2xl rounded-xl border-4 focus:border-gray-200 w-1/2";
+    "bg-gray-200 border-gray-300 lg:px-32 py-12 text-2xl rounded-xl border-4 focus:border-gray-200 w-half-screen";
 
   return (
     <>
