@@ -25,7 +25,7 @@ export const Measure = (): React.JSX.Element => {
         {imageSrc && <GrowthGuide />}
         <PatientImage img={imageSrc} rotation={rotation} />
       </div>
-      <RotateImage setRotation={setRotation} />
+      {imageSrc && <RotateImage setRotation={setRotation} />}
     </div>
   );
 };

@@ -44,4 +44,14 @@ describe("MeasureGrowth Integration Tests", () => {
     renderMeasureWithState();
     expect(screen.queryByAltText("Growth Guide")).not.toBeInTheDocument();
   });
+
+  it("renders Image Rotation slider provided imageSrc", () => {
+    renderMeasureWithState(initialState);
+    expect(screen.getByText("Angle")).toBeInTheDocument();
+  });
+
+  it("renders no Image Rotation slider without imageSrc", () => {
+    renderMeasureWithState();
+    expect(screen.queryByText("Angle")).not.toBeInTheDocument();
+  });
 });
