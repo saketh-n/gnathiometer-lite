@@ -4,6 +4,13 @@ type RotateImageProps = {
   setRotation: (value: number) => void;
 };
 
+/**
+ *
+ * @param {(value: number) => void} [setRotation] callBack that updates
+ * PatientImage's rotation based on the slider value
+ * @returns {React.JSX.Element} Circular Slider that toggles the rotation
+ * of Patient Image
+ */
 export const RotateImage = ({
   setRotation,
 }: RotateImageProps): React.JSX.Element => {
