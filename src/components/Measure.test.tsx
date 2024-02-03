@@ -54,4 +54,14 @@ describe("MeasureGrowth Integration Tests", () => {
     renderMeasureWithState();
     expect(screen.queryByText("Angle")).not.toBeInTheDocument();
   });
+
+  it("renders Scale Image provided imageSrc", () => {
+    renderMeasureWithState(initialState);
+    expect(screen.getByText(/Scaling/)).toBeInTheDocument();
+  });
+
+  it("renders no Scale Image without imageSrc", () => {
+    renderMeasureWithState();
+    expect(screen.queryByText(/Scaling/)).not.toBeInTheDocument();
+  });
 });

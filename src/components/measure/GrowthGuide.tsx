@@ -8,10 +8,7 @@ import guide from "../../images/app/growth-guide.png";
  */
 export const GrowthGuide = (): React.JSX.Element => {
   // Make sure the Growth Guide always overlays any image
-  const guideStyle: React.CSSProperties = {
-    position: "relative",
-    zIndex: 1000,
-    pointerEvents: "none",
-  };
-  return <img src={guide} alt="Growth Guide" style={guideStyle} />;
+  const guideStyle: string = "z-10 relative pointer-events-none";
+
+  return <img src={guide} alt="Growth Guide" className={guideStyle} />;
 };

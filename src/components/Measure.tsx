@@ -3,6 +3,7 @@ import { PatientImage } from "./measure/PatientImage";
 import { GrowthGuide } from "./measure/GrowthGuide";
 import { RotateImage } from "./measure/RotateImage";
 import { useState } from "react";
+import { ScaleImage } from "./measure/ScaleImage";
 
 interface LocationState {
   image?: string;
@@ -18,14 +19,27 @@ export const Measure = (): React.JSX.Element => {
   const location = useLocation();
   const imageSrc = (location.state as LocationState)?.image;
   const [rotation, setRotation] = useState(0);
+  const [scalingFactor, setScalingFactor] = useState(1.0);
 
   return (
     <div>
       <div className="flex justify-center items-center">
-        {imageSrc && <GrowthGuide />}
-        <PatientImage img={imageSrc} rotation={rotation} />
+        {imageSrc && (
+          <>
+            <GrowthGuide />
+            <RotateImage setRotation={setRotation} />
+            <ScaleImage
+              scalingFactor={scalingFactor}
+              setScalingFactor={setScalingFactor}
+            />{" "}
+          </>
+        )}
+        <PatientImage
+          img={imageSrc}
+          rotation={rotation}
+          scalingFactor={scalingFactor}
+        />
       </div>
-      {imageSrc && <RotateImage setRotation={setRotation} />}
     </div>
   );
 };
