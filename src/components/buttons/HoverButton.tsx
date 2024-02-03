@@ -11,11 +11,12 @@ type HoverButtonProps = {
 
 /**
  *
- * @param tailwindStyle Tailwind Classes to Style the Button
- * @param text What the button should display
- * @param bgImg Background image for the button
- * @param click What to do if the button is clicked, defaults to undefined
- * @returns Button that darkens when hovered over
+ * @param {string} tailwindStyle Tailwind Classes to Style the Button
+ * @param {string} text What the button should display
+ * @param {string?} bgImg Background image for the button
+ * @param {() => void} click What to do if the button is clicked, defaults
+ * to undefined
+ * @returns {React.JSX.Element} Button that darkens when hovered over
  */
 export const HoverButton = ({
   tailwindStyle,
