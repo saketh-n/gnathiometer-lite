@@ -31,17 +31,26 @@ export const PatientImage = ({
     };
   }, [normalizedRotation, scalingFactor]);
 
+  const handleDragStart = (event: React.DragEvent<HTMLImageElement>) => {
+    // Prevent the default drag behavior - stops jerky motion of Draggable
+    event.preventDefault();
+  };
+
   const nodeRef = useRef(null);
 
   if (!img) {
     return <ImageNotFound route="/measure-growth" />;
   }
 
-  // TODO: Draggable motion is jerky. Fix
   return (
     <Draggable nodeRef={nodeRef}>
       <div ref={nodeRef} className="flex-no-resize">
-        <img src={img} alt="Patient" style={imageStyle} />
+        <img
+          src={img}
+          alt="Patient"
+          style={imageStyle}
+          onDragStart={handleDragStart}
+        />
       </div>
     </Draggable>
   );
