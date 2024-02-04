@@ -44,7 +44,7 @@ export const PatientImage = ({
 
   return (
     <Draggable nodeRef={nodeRef}>
-      <div ref={nodeRef} className="flex-no-resize">
+      <div ref={nodeRef} className="flex-shrink-0">
         <img
           src={img}
           alt="Patient"

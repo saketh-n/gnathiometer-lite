@@ -5,7 +5,3 @@
 .w-half-screen {
   width: 50vw;
 }
-
-.flex-no-resize {
-  flex: 0 0 auto;
-}

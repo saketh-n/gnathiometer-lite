@@ -26,12 +26,16 @@ export const Measure = (): React.JSX.Element => {
       <div className="flex justify-center items-center">
         {imageSrc && (
           <>
-            <GrowthGuide />
-            <RotateImage setRotation={setRotation} />
-            <ScaleImage
-              scalingFactor={scalingFactor}
-              setScalingFactor={setScalingFactor}
-            />{" "}
+            <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
+              <GrowthGuide />
+              <div className="flex items-center justify-around pointer-events-auto bg-gray-200 mt-4">
+                <RotateImage setRotation={setRotation} />
+                <ScaleImage
+                  scalingFactor={scalingFactor}
+                  setScalingFactor={setScalingFactor}
+                />
+              </div>
+            </div>
           </>
         )}
         <PatientImage

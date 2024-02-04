@@ -29,7 +29,7 @@ export const ScaleImage = ({
   const scalingPercent = scalingFactor * 100;
 
   return (
-    <div className="z-10">
+    <div>
       <label htmlFor="scalingInput">Scaling Factor (%): </label>
       <input
         type="number"
