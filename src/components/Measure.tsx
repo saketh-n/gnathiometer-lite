@@ -21,29 +21,30 @@ export const Measure = (): React.JSX.Element => {
   const [rotation, setRotation] = useState(0);
   const [scalingFactor, setScalingFactor] = useState(1.0);
 
+  const imageTransformBoardStyle =
+    "flex items-center justify-around pointer-events-auto border-gray-300 bg-gray-200 border-4 rounded-md p-4 mt-4";
+
   return (
-    <div>
-      <div className="flex justify-center items-center">
-        {imageSrc && (
-          <>
-            <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
-              <GrowthGuide />
-              <div className="flex items-center justify-around pointer-events-auto bg-gray-200 mt-4">
-                <RotateImage setRotation={setRotation} />
-                <ScaleImage
-                  scalingFactor={scalingFactor}
-                  setScalingFactor={setScalingFactor}
-                />
-              </div>
+    <div className="flex justify-center items-center">
+      {imageSrc && (
+        <>
+          <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
+            <GrowthGuide />
+            <div className={imageTransformBoardStyle}>
+              <RotateImage setRotation={setRotation} />
+              <ScaleImage
+                scalingFactor={scalingFactor}
+                setScalingFactor={setScalingFactor}
+              />
             </div>
-          </>
-        )}
-        <PatientImage
-          img={imageSrc}
-          rotation={rotation}
-          scalingFactor={scalingFactor}
-        />
-      </div>
+          </div>
+        </>
+      )}
+      <PatientImage
+        img={imageSrc}
+        rotation={rotation}
+        scalingFactor={scalingFactor}
+      />
     </div>
   );
 };

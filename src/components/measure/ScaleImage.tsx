@@ -29,17 +29,19 @@ export const ScaleImage = ({
   const scalingPercent = scalingFactor * 100;
 
   return (
-    <div>
-      <label htmlFor="scalingInput">Scaling Factor (%): </label>
-      <input
-        type="number"
-        id="scalingInput"
-        value={scalingPercent}
-        onChange={handleScalingChange}
-        min="1"
-        max="300"
-        step="0.1"
-      />
+    <div className="flex flex-col gap-2">
+      <div>
+        <label htmlFor="scalingInput">Scaling Factor (%): </label>
+        <input
+          type="number"
+          id="scalingInput"
+          value={scalingPercent}
+          onChange={handleScalingChange}
+          min="1"
+          max="300"
+          step="0.1"
+        />
+      </div>
       <input
         type="range"
         id="scalingSlider"
