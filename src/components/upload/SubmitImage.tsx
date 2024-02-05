@@ -13,7 +13,7 @@ type SubmitImageProps = {
  *
  * @param {string} submitText What the upload button should display
  * @param {string} route The path to navigate to after image upload
- * @param {string} testId test id name for unit test selectors
+ * @param {string?} testId test id name for unit test selectors
  * @returns {React.JSX.Element} Select an image, and upload it to the page
  * reached by route
  */
