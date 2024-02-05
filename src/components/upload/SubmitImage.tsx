@@ -6,19 +6,21 @@ import { loadImage, handleImageLoad } from "../../helpers/image-utils";
 type SubmitImageProps = {
   submitText: string;
   route: string;
+  testId?: string;
 };
 
 /**
  *
  * @param {string} submitText What the upload button should display
  * @param {string} route The path to navigate to after image upload
+ * @param {string} testId test id name for unit test selectors
  * @returns {React.JSX.Element} Select an image, and upload it to the page
  * reached by route
  */
-// TODO: Make it work for not just uploading to a route, but also on the same page
 export const SubmitImage = ({
   submitText,
   route,
+  testId,
 }: SubmitImageProps): React.JSX.Element => {
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
@@ -60,6 +62,7 @@ export const SubmitImage = ({
         tailwindStyle={tailwindStyle}
         text={submitText}
         click={() => inputRef.current?.click()}
+        testId={testId}
       />
       <input
         type="file"

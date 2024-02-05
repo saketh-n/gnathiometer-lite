@@ -26,42 +26,42 @@ describe("MeasureGrowth Integration Tests", () => {
 
   it("renders PatientImage with provided image source", () => {
     renderMeasureWithState(initialState);
-    const image = screen.getByAltText("Patient");
+    const image = screen.getByTestId("patient-image");
     expect(image).toHaveAttribute("src", "test-image-url");
   });
 
   it("renders no image when imageSrc is not provided", () => {
     renderMeasureWithState();
-    expect(screen.queryByAltText("Patient")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("patient-image")).not.toBeInTheDocument();
   });
 
   it("renders GrowthGuide provided imageSrc", () => {
     renderMeasureWithState(initialState);
-    expect(screen.getByAltText("Growth Guide")).toBeInTheDocument();
+    expect(screen.getByTestId("growth-guide")).toBeInTheDocument();
   });
 
   it("renders no GrowthGuide without imageSrc", () => {
     renderMeasureWithState();
-    expect(screen.queryByAltText("Growth Guide")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("growth-guide")).not.toBeInTheDocument();
   });
 
   it("renders Image Rotation slider provided imageSrc", () => {
     renderMeasureWithState(initialState);
-    expect(screen.getByText("Angle")).toBeInTheDocument();
+    expect(screen.getByTestId("image-rotate")).toBeInTheDocument();
   });
 
   it("renders no Image Rotation slider without imageSrc", () => {
     renderMeasureWithState();
-    expect(screen.queryByText("Angle")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("image-rotate")).not.toBeInTheDocument();
   });
 
   it("renders Scale Image provided imageSrc", () => {
     renderMeasureWithState(initialState);
-    expect(screen.getByText(/Scaling/)).toBeInTheDocument();
+    expect(screen.getByTestId("scale-image")).toBeInTheDocument();
   });
 
   it("renders no Scale Image without imageSrc", () => {
     renderMeasureWithState();
-    expect(screen.queryByText(/Scaling/)).not.toBeInTheDocument();
+    expect(screen.queryByTestId("scale-image")).not.toBeInTheDocument();
   });
 });

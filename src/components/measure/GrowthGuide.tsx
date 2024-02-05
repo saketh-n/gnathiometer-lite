@@ -7,5 +7,5 @@ import guide from "../../images/app/growth-guide.png";
  * @returns {React.JSX.Element} Gnathiometer Growth Guide.
  */
 export const GrowthGuide = (): React.JSX.Element => {
-  return <img src={guide} alt="Growth Guide" />;
+  return <img src={guide} alt="Growth Guide" data-testid="growth-guide" />;
 };

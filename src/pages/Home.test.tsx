@@ -10,7 +10,7 @@ describe("Home", () => {
         <Home />
       </MemoryRouter>
     );
-    expect(screen.getByText("Measure Growth")).toBeInTheDocument();
-    expect(screen.getByText("Measure Improvement")).toBeInTheDocument();
+    expect(screen.getByTestId("measure-growth")).toBeInTheDocument();
+    expect(screen.getByTestId("measure-improvement")).toBeInTheDocument();
   });
 });

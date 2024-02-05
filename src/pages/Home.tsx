@@ -16,6 +16,7 @@ export const Home = (): React.JSX.Element => {
           img={measureImage}
           text="Measure Growth"
           route="/upload-growth"
+          testId="measure-growth"
         />
       </div>
       <div className="flex justify-center items-center h-1/2">
@@ -23,6 +24,7 @@ export const Home = (): React.JSX.Element => {
           img={measureImprovement}
           text="Measure Improvement"
           route="/upload-improvement"
+          testId="measure-improvement"
         />
       </div>
     </div>

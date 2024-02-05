@@ -12,7 +12,7 @@ describe("ImageNotFound Component Tests", () => {
         <ImageNotFound route={routePath} />
       </MemoryRouter>
     );
-    const reUploadButton = screen.getByText(/re-upload image ⬆️/i);
+    const reUploadButton = screen.getByTestId("re-upload-button");
     expect(reUploadButton).toBeInTheDocument();
   });
 });

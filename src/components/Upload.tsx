@@ -34,7 +34,11 @@ export const Upload = ({
         <RefImage img={img} />
       </div>
       <div className="flex justify-center w-full">
-        <SubmitImage submitText={submitText} route={route} />
+        <SubmitImage
+          submitText={submitText}
+          route={route}
+          testId="upload-image"
+        />
       </div>
     </div>
   );

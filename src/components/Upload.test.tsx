@@ -20,7 +20,7 @@ describe("Upload Component", () => {
 
   it("renders without crashing", () => {
     render(dummyComponent);
-    expect(screen.getByAltText("Reference")).toBeInTheDocument();
+    expect(screen.getByTestId("ref-image")).toBeInTheDocument();
   });
 
   it("displays correct title", () => {

@@ -50,6 +50,7 @@ export const PatientImage = ({
           alt="Patient"
           style={imageStyle}
           onDragStart={handleDragStart}
+          data-testid="patient-image"
         />
       </div>
     </Draggable>

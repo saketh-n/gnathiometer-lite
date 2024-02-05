@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 describe("PatientImage Unit Tests", () => {
   it("renders image with correct src and alt text", () => {
     render(<PatientImage img="test-image-url" />);
-    const image = screen.getByAltText("Patient");
+    const image = screen.getByTestId("patient-image");
     expect(image).toHaveAttribute("src", "test-image-url");
   });
 
@@ -14,7 +14,7 @@ describe("PatientImage Unit Tests", () => {
     render(
       <PatientImage img="test-image-url" rotation={90} scalingFactor={2} />
     );
-    const image = screen.getByAltText("Patient");
+    const image = screen.getByTestId("patient-image");
     expect(image).toHaveStyle("transform: rotate(90deg) scale(2)");
   });
 
@@ -24,6 +24,6 @@ describe("PatientImage Unit Tests", () => {
         <PatientImage />
       </MemoryRouter>
     );
-    expect(screen.getByText("Patient image not found")).toBeInTheDocument();
+    expect(screen.getByTestId("not-found-text")).toBeInTheDocument();
   });
 });

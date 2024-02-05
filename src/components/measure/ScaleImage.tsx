@@ -29,7 +29,7 @@ export const ScaleImage = ({
   const scalingPercent = scalingFactor * 100;
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2" data-testid="scale-image">
       <div>
         <label htmlFor="scalingInput">Scaling Factor (%): </label>
         <input

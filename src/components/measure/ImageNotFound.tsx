@@ -19,8 +19,14 @@ export const ImageNotFound = ({
 }: ImageNotFoundProps): React.JSX.Element => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      <p className="text-2xl text-center my-8">{notFound}</p>
-      <SubmitImage submitText={submitText} route={route} />
+      <p className="text-2xl text-center my-8" data-testid="not-found-text">
+        {notFound}
+      </p>
+      <SubmitImage
+        submitText={submitText}
+        route={route}
+        testId="re-upload-button"
+      />
     </div>
   );
 };
