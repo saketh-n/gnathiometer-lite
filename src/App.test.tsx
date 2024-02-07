@@ -17,4 +17,9 @@ describe("App Component", () => {
     render(<App useTestRouter={true} initialEntries={["/measure-growth"]} />);
     expect(screen.getByTestId("re-upload-button")).toBeInTheDocument();
   });
+
+  it("renders NotFound component for an unknown route", () => {
+    render(<App useTestRouter={true} initialEntries={["/unknown-route"]} />);
+    expect(screen.getByTestId("not-found-title")).toBeInTheDocument();
+  });
 });

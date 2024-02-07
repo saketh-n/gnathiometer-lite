@@ -4,9 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { UploadGrowth } from "./pages/UploadGrowth";
-import { MeasureGrowth } from "./pages/MeasureGrowth";
+import { routesConfig } from "./routesConfig";
 
 // Only for testing
 type AppProps = {
@@ -21,7 +19,6 @@ type AppProps = {
  * MemoryRouter for testing.
  * @returns {React.JSX.Element} Routed Single Page Gnathiometer
  */
-// TODO: Needs to handle exact routes, 404 Page
 export const App = ({
   useTestRouter = false,
   initialEntries = ["/"],
@@ -32,9 +29,13 @@ export const App = ({
   return (
     <RouterComponent {...routerProps}>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/upload-growth" element={<UploadGrowth />} />
-        <Route path="/measure-growth" element={<MeasureGrowth />} />
+        {routesConfig.map((route) => (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={<route.component />}
+          />
+        ))}
       </Routes>
     </RouterComponent>
   );
