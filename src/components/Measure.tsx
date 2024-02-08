@@ -4,6 +4,7 @@ import { GrowthGuide } from "./measure/GrowthGuide";
 import { RotateImage } from "./measure/RotateImage";
 import { useState } from "react";
 import { ScaleImage } from "./measure/ScaleImage";
+import { NavBar } from "./measure/NavBar";
 
 interface LocationState {
   image?: string;
@@ -25,9 +26,10 @@ export const Measure = (): React.JSX.Element => {
     "flex items-center justify-around pointer-events-auto border-gray-300 bg-gray-200 border-4 rounded-md p-4 mt-4";
 
   return (
-    <div className="flex justify-center items-center">
-      {imageSrc && (
-        <>
+    <>
+      <NavBar priorRoute="/upload-growth" />
+      <div className="flex justify-center items-center">
+        {imageSrc && (
           <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
             <GrowthGuide />
             <div className={imageTransformBoardStyle}>
@@ -38,13 +40,13 @@ export const Measure = (): React.JSX.Element => {
               />
             </div>
           </div>
-        </>
-      )}
-      <PatientImage
-        img={imageSrc}
-        rotation={rotation}
-        scalingFactor={scalingFactor}
-      />
-    </div>
+        )}
+        <PatientImage
+          img={imageSrc}
+          rotation={rotation}
+          scalingFactor={scalingFactor}
+        />
+      </div>
+    </>
   );
 };
