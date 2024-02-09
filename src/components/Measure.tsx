@@ -29,9 +29,10 @@ export const Measure = (): React.JSX.Element => {
   const [instructionIndex, setInstructionIndex] = useState(0);
   const chinMarkerIndex = getChinMarkerIndex(instructions);
 
-  const imageTransformBoardStyle =
-    "flex items-center justify-around pointer-events-auto border-gray-300 bg-gray-200 border-4 rounded-md p-4 mt-4";
-
+  const chinMarkerEnabled = instructionIndex >= chinMarkerIndex;
+  const imageTransformBoardStyle = `flex items-center justify-around ${
+    chinMarkerEnabled ? "pointer-events-none" : "pointer-events-auto"
+  }  border-gray-300 bg-gray-200 border-4 rounded-md p-4 mt-4`;
   return (
     <>
       <NavBar
@@ -43,7 +44,7 @@ export const Measure = (): React.JSX.Element => {
         {imageSrc && (
           <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
             <GrowthGuide />
-            {instructionIndex >= chinMarkerIndex && <ChinMarker />}
+            {chinMarkerEnabled && <ChinMarker />}
             <div className={imageTransformBoardStyle}>
               <RotateImage setRotation={setRotation} />
               <ScaleImage
@@ -57,6 +58,7 @@ export const Measure = (): React.JSX.Element => {
           img={imageSrc}
           rotation={rotation}
           scalingFactor={scalingFactor}
+          chinMarkerEnabled={chinMarkerEnabled}
         />
       </div>
     </>

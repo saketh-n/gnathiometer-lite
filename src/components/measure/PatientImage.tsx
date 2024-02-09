@@ -6,6 +6,7 @@ type PatientImageProps = {
   img?: string;
   rotation?: number;
   scalingFactor?: number;
+  chinMarkerEnabled?: boolean;
 };
 
 /**
@@ -13,6 +14,8 @@ type PatientImageProps = {
  * @param {string} props.img The image to be displayed
  * @param {number} [props.rotation=0] Rotation angle of image in degrees
  * @param {number} [props.scalingFactor=1] Scaling Factor for image, defaults to 1
+ * @param {boolean} [props.chinMarkerEnabled=false] Whether the chinMarker is
+ * available and if it is you want to make the patient image unchangeable.
  * @returns {React.JSX.Element} Draggable image element with specified transformations
  * If image value is invalid, returns no image found
  */
@@ -20,6 +23,7 @@ export const PatientImage = ({
   img,
   rotation = 0,
   scalingFactor = 1,
+  chinMarkerEnabled = false,
 }: PatientImageProps): React.JSX.Element => {
   const normalizedRotation = useMemo(() => {
     return rotation % 360;
@@ -44,7 +48,12 @@ export const PatientImage = ({
 
   return (
     <Draggable nodeRef={nodeRef}>
-      <div ref={nodeRef} className="flex-shrink-0">
+      <div
+        ref={nodeRef}
+        className={`flex-shrink-0 ${
+          chinMarkerEnabled ? "pointer-events-none" : "cursor-move"
+        }`}
+      >
         <img
           src={img}
           alt="Patient"
