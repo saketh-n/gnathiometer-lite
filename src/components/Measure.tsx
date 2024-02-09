@@ -43,6 +43,7 @@ export const Measure = (): React.JSX.Element => {
         {imageSrc && (
           <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
             <GrowthGuide />
+            {instructionIndex >= chinMarkerIndex && <ChinMarker />}
             <div className={imageTransformBoardStyle}>
               <RotateImage setRotation={setRotation} />
               <ScaleImage
@@ -57,7 +58,6 @@ export const Measure = (): React.JSX.Element => {
           rotation={rotation}
           scalingFactor={scalingFactor}
         />
-        {instructionIndex >= chinMarkerIndex && <ChinMarker />}
       </div>
     </>
   );

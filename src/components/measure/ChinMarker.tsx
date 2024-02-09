@@ -29,7 +29,7 @@ export const ChinMarker = ({
     "cursor-move pointer-events-auto absolute flex items-center justify-center";
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
-  const nodeRef = useRef(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
 
   /**
    * Handles the stop event of the draggable action, updating the marker's position.
@@ -46,14 +46,28 @@ export const ChinMarker = ({
 
   // Set initial position of marker
   useEffect(() => {
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    setPosition({ x: centerX, y: centerY });
+    if (nodeRef.current && nodeRef.current.parentElement) {
+      const parent = nodeRef.current.parentElement;
+      const { width, height } = parent.getBoundingClientRect();
+      const centerX = width / 2;
+      const centerY = height / 2;
+      // Adjust the position to center within the parent, taking into account the marker's size if necessary
+      setPosition({
+        x: centerX - nodeRef.current.offsetWidth / 2,
+        y: centerY - nodeRef.current.offsetHeight / 2,
+      });
+    }
   }, []);
 
+  // TODO: Bound it to the exact bounds of the Growth Guide
   return (
     <div className={containerStyle} data-testid="chin-marker">
-      <Draggable position={position} onStop={handleStop} nodeRef={nodeRef}>
+      <Draggable
+        position={position}
+        onStop={handleStop}
+        nodeRef={nodeRef}
+        bounds="parent"
+      >
         <div ref={nodeRef} className={markerStyle}>
           <div className={lineColor} style={leftLineStyling(rotation)}></div>
 
