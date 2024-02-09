@@ -50,7 +50,7 @@ export const PatientImage = ({
     <Draggable nodeRef={nodeRef}>
       <div
         ref={nodeRef}
-        className={`flex-shrink-0 ${
+        className={`flex-shrink-0 absolute ${
           chinMarkerEnabled ? "pointer-events-none" : "cursor-move"
         }`}
       >
