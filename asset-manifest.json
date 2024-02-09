@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/gnathiometer-lite/static/css/main.27b910a8.css",
+    "main.js": "/gnathiometer-lite/static/js/main.b9d92611.js",
+    "static/media/growth-guide.png": "/gnathiometer-lite/static/media/growth-guide.24d1d8a76799d840b4dc.png",
+    "static/media/measure.png": "/gnathiometer-lite/static/media/measure.ba9b4540433fdf8a294e.png",
+    "static/media/improvement.png": "/gnathiometer-lite/static/media/improvement.0f95a0423463b54b318c.png",
+    "static/media/m-improv-ref.jpg": "/gnathiometer-lite/static/media/m-improv-ref.7b13128ce539627bbe37.jpg",
+    "index.html": "/gnathiometer-lite/index.html",
+    "main.27b910a8.css.map": "/gnathiometer-lite/static/css/main.27b910a8.css.map",
+    "main.b9d92611.js.map": "/gnathiometer-lite/static/js/main.b9d92611.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.27b910a8.css",
+    "static/js/main.b9d92611.js"
+  ]
+}
