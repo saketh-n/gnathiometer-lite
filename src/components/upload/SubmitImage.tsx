@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { HoverButton } from "../buttons/HoverButton";
-import { loadImage, handleImageLoad } from "../../helpers/image-utils";
+import { loadImage, handleImageLoad } from "../../helpers/utils/image-utils";
 
 type SubmitImageProps = {
   submitText: string;

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { growthInstructions as instructions } from "../../helpers/instructions";
+import { growthInstructions as instructions } from "../../helpers/constants/instructions";
 
 type NavBarProps = {
   priorRoute: string;
+  index: number;
+  setIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
 /**
@@ -12,13 +14,19 @@ type NavBarProps = {
  * that require user navigation or guidance.
  * @param {string} priorRoute Where to navigate to if you press back on the first
  * instruction
+ * @param {number} props.index The current index of the instructions, indicating
+ * which instruction to display.
+ * @param {React.Dispatch<React.SetStateAction<number>>} props.setIndex The
+ * function to update the current index, allowing navigation through instructions.
  * @returns {React.JSX.Element} A navigation bar with back and forward buttons
  * and a central text.
  */
-export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
+export const NavBar = ({
+  priorRoute,
+  index,
+  setIndex,
+}: NavBarProps): React.JSX.Element => {
   const navigate = useNavigate();
-
-  const [index, setIndex] = useState(0);
 
   const handleNext = () => {
     if (index < instructions.length - 1) {

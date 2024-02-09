@@ -9,3 +9,16 @@ export const growthInstructions = [
   "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle",
   "View and Print Results",
 ];
+
+/**
+ * Finds the index of the first instruction referring to chin marker
+ * Handy for determining when to show the ChinMarker component
+ *
+ * @param {string[]} instructions - Instructions to look through.
+ * @returns {number} The index of the instruction containing "Chin Marker", or -1 if not found.
+ */
+export const getChinMarkerIndex = (instructions: string[]): number => {
+  return instructions.findIndex((instruction) =>
+    instruction.includes("Chin Marker")
+  );
+};

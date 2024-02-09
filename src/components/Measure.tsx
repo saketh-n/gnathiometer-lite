@@ -5,6 +5,11 @@ import { RotateImage } from "./measure/RotateImage";
 import { useState } from "react";
 import { ScaleImage } from "./measure/ScaleImage";
 import { NavBar } from "./measure/NavBar";
+import {
+  growthInstructions as instructions,
+  getChinMarkerIndex,
+} from "../helpers/constants/instructions";
+import { ChinMarker } from "./measure/ChinMarker";
 
 interface LocationState {
   image?: string;
@@ -21,13 +26,19 @@ export const Measure = (): React.JSX.Element => {
   const imageSrc = (location.state as LocationState)?.image;
   const [rotation, setRotation] = useState(0);
   const [scalingFactor, setScalingFactor] = useState(1.0);
+  const [instructionIndex, setInstructionIndex] = useState(0);
+  const chinMarkerIndex = getChinMarkerIndex(instructions);
 
   const imageTransformBoardStyle =
     "flex items-center justify-around pointer-events-auto border-gray-300 bg-gray-200 border-4 rounded-md p-4 mt-4";
 
   return (
     <>
-      <NavBar priorRoute="/upload-growth" />
+      <NavBar
+        priorRoute="/upload-growth"
+        index={instructionIndex}
+        setIndex={setInstructionIndex}
+      />
       <div className="flex justify-center items-center">
         {imageSrc && (
           <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
@@ -46,6 +57,7 @@ export const Measure = (): React.JSX.Element => {
           rotation={rotation}
           scalingFactor={scalingFactor}
         />
+        {instructionIndex >= chinMarkerIndex && <ChinMarker />}
       </div>
     </>
   );
