@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { growthInstructions as instructions } from "../../helpers/constants/instructions";
 
