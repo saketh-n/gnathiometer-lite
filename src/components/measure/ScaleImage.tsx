@@ -1,9 +1,5 @@
-import { useCallback } from "react";
-
-type ScaleImageProps = {
-  scalingFactor: number;
-  setScalingFactor: (value: number) => void;
-};
+import { useCallback, useContext } from "react";
+import { MeasureContext } from "../../contexts/MeasureContext";
 
 /**
  * @param {(value: number) => void} Callback to update the scalingFactor
@@ -11,10 +7,8 @@ type ScaleImageProps = {
  * @returns {React.JSX.Element} Slider and Text Input to alter the image
  * scaling factor
  */
-export const ScaleImage = ({
-  scalingFactor,
-  setScalingFactor,
-}: ScaleImageProps): React.JSX.Element => {
+export const ScaleImage = (): React.JSX.Element => {
+  const { scalingFactor, setScalingFactor } = useContext(MeasureContext);
   // memoize the function
   const handleScalingChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,19 +1,15 @@
 import CircularSlider from "@fseehawer/react-circular-slider";
-
-type RotateImageProps = {
-  setRotation: (value: number) => void;
-};
+import { useContext } from "react";
+import { MeasureContext } from "../../contexts/MeasureContext";
 
 /**
  *
- * @param {(value: number) => void} [setRotation] callBack that updates
- * PatientImage's rotation based on the slider value
  * @returns {React.JSX.Element} Circular Slider that toggles the rotation
  * of Patient Image
  */
-export const RotateImage = ({
-  setRotation,
-}: RotateImageProps): React.JSX.Element => {
+export const RotateImage = (): React.JSX.Element => {
+  const { setRotation } = useContext(MeasureContext);
+
   return (
     <div data-testid="image-rotate">
       <CircularSlider

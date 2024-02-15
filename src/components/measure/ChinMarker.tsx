@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import Draggable, {
   DraggableData,
   DraggableEvent,
@@ -51,7 +52,8 @@ export const ChinMarker = ({
       const { width, height } = parent.getBoundingClientRect();
       const centerX = width / 2;
       const centerY = height / 2;
-      // Adjust the position to center within the parent, taking into account the marker's size if necessary
+      // Adjust the position to center within the parent, taking into account the
+      // marker's size if necessary
       setPosition({
         x: centerX - nodeRef.current.offsetWidth / 2,
         y: centerY - nodeRef.current.offsetHeight / 2,
@@ -59,7 +61,6 @@ export const ChinMarker = ({
     }
   }, []);
 
-  // TODO: Bound it to the exact bounds of the Growth Guide
   return (
     <div className={containerStyle} data-testid="chin-marker">
       <Draggable

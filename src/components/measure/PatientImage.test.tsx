@@ -2,6 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import { PatientImage } from "./PatientImage";
 import { MemoryRouter } from "react-router-dom";
+import { MockMeasureProvider } from "../../contexts/MockMeasureContext";
 
 describe("PatientImage Unit Tests", () => {
   it("renders image with correct src and alt text", () => {
@@ -12,7 +13,9 @@ describe("PatientImage Unit Tests", () => {
 
   it("applies correct style for rotation and scaling", () => {
     render(
-      <PatientImage img="test-image-url" rotation={90} scalingFactor={2} />
+      <MockMeasureProvider initialContext={{ rotation: 90, scalingFactor: 2 }}>
+        <PatientImage img="test-image-url" />
+      </MockMeasureProvider>
     );
     const image = screen.getByTestId("patient-image");
     expect(image).toHaveStyle("transform: rotate(90deg) scale(2)");

@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { NavBar } from "./NavBar";
 import { MemoryRouter } from "react-router-dom";
 import { growthInstructions as instructions } from "../../helpers/constants/instructions";
+import { MockMeasureProvider } from "../../contexts/MockMeasureContext";
 
 const priorRoute = "/upload-growth";
 
 /**
- * This setup is especially useful for testing scenarios where you need to simulate
- * useState, since you cannot use useState hooks in tests
- *
- * @returns {React.JSX.Element} A wrapped `NavBar` component with state control for the active index,
- * enclosed within a `MemoryRouter` for navigation simulation.
+ * @returns {React.JSX.Element} A wrapped `NavBar` component useful for testing purposes.
  */
 const NavBarWrapper = (): React.JSX.Element => {
-  const [index, setIndex] = useState(0);
   return (
     <MemoryRouter>
-      <NavBar priorRoute={priorRoute} index={index} setIndex={setIndex} />
+      <MockMeasureProvider>
+        <NavBar priorRoute={priorRoute} />
+      </MockMeasureProvider>
     </MemoryRouter>
   );
 };

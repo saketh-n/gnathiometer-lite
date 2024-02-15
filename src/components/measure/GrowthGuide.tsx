@@ -1,4 +1,7 @@
+import { useContext } from "react";
 import guide from "../../images/app/growth-guide.png";
+import { MeasureContext } from "../../contexts/MeasureContext";
+import { ChinMarker } from "./ChinMarker";
 
 /**
  *
@@ -7,5 +10,12 @@ import guide from "../../images/app/growth-guide.png";
  * @returns {React.JSX.Element} Gnathiometer Growth Guide.
  */
 export const GrowthGuide = (): React.JSX.Element => {
-  return <img src={guide} alt="Growth Guide" data-testid="growth-guide" />;
+  const { chinMarkerEnabled } = useContext(MeasureContext);
+
+  return (
+    <div className="relative">
+      <img src={guide} alt="Growth Guide" data-testid="growth-guide" />
+      {chinMarkerEnabled && <ChinMarker />}
+    </div>
+  );
 };
