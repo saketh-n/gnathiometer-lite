@@ -25,6 +25,8 @@ export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
   const handleNext = () => {
     if (index < instructions.length - 1) {
       setIndex(index + 1);
+    } else {
+      window.print();
     }
   };
 

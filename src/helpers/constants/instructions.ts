@@ -7,7 +7,7 @@ export const growthInstructions = [
   "Rotate the Patient Image so that Point F touches the soft tissue of the forehead above",
   "Place the Chin Marker on the Gnathion (forwardmost and downwardmost point on the Chin)",
   "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle",
-  "View and Print Results",
+  "Press Next to Print Results",
 ];
 
 /**
@@ -28,5 +28,5 @@ export const getChinMarkerIndex = (instructions: string[]): number => {
  * instructions. This is when to show the computed angle of forward growth
  */
 export const showGrowthIndex = (): number => {
-  return getChinMarkerIndex(growthInstructions) + 1;
+  return getChinMarkerIndex(growthInstructions) + 2;
 };
