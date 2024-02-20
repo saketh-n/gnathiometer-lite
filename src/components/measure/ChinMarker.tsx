@@ -1,16 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import Draggable, {
   DraggableData,
   DraggableEvent,
   DraggableEventHandler,
 } from "react-draggable";
+
 import {
   leftLineStyling,
   rightLineStyling,
   dotStyling,
   lineColor,
 } from "../../helpers/constants/chinMarker";
+import { showGrowthIndex } from "../../helpers/constants/instructions";
+
+import { MeasureContext } from "../../contexts/MeasureContext";
+
+import { ShowAngle } from "./ShowAngle";
 
 type ChinMarkerProps = {
   rotation?: number;
@@ -28,7 +34,11 @@ export const ChinMarker = ({
     "absolute top-0 left-0 w-full h-full z-1000 pointer-events-none";
   const markerStyle =
     "cursor-move pointer-events-auto absolute flex items-center justify-center";
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const {
+    chinMarkerPosition: position,
+    setChinMarkerPosition: setPosition,
+    instructionIndex: index,
+  } = useContext(MeasureContext);
 
   const nodeRef = useRef<HTMLDivElement>(null);
 
@@ -59,7 +69,7 @@ export const ChinMarker = ({
         y: centerY - nodeRef.current.offsetHeight / 2,
       });
     }
-  }, []);
+  }, [setPosition]);
 
   return (
     <div className={containerStyle} data-testid="chin-marker">
@@ -77,6 +87,7 @@ export const ChinMarker = ({
           <div className={lineColor} style={rightLineStyling(rotation)}></div>
         </div>
       </Draggable>
+      {index >= showGrowthIndex() && <ShowAngle />}
     </div>
   );
 };

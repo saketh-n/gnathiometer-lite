@@ -4,6 +4,8 @@ import React, { ReactNode, useState } from "react";
 
 import { MeasureContextProps, MeasureContext } from "./MeasureContext";
 
+import { defaultPosition } from "../types/position";
+
 type MockMeasureProviderProps = {
   children: ReactNode;
   initialContext?: Partial<MeasureContextProps>;
@@ -20,9 +22,14 @@ export const MockMeasureProvider = ({
   const [scalingFactor, setScalingFactor] = useState(
     initialContext.scalingFactor || 1
   );
+  const [chinMarkerPosition, setChinMarkerPosition] = useState(
+    initialContext.chinMarkerPosition || defaultPosition
+  );
 
   const testContext: MeasureContextProps = {
     chinMarkerEnabled: initialContext.chinMarkerEnabled || false,
+    chinMarkerPosition,
+    setChinMarkerPosition,
     instructionIndex,
     setInstructionIndex,
     rotation,

@@ -3,12 +3,13 @@
  * for the chin marker
  */
 
+import { Position } from "../../types/position";
 import { pixelsPerMM } from "./growthGuide";
 
 const lineHeight = pixelsPerMM;
 const lineWidth = lineHeight * 10;
-export const gap = lineWidth / 2;
-export const dotSize = pixelsPerMM * 2;
+const gap = lineWidth / 2;
+const dotSize = pixelsPerMM * 2;
 
 const distanceToCenter = (gap + dotSize) / 2;
 
@@ -52,8 +53,25 @@ export const rightLineStyling = (rotation: number): React.CSSProperties => {
   return lineStyling(transformOriginXRightLine, rotation);
 };
 
+/**
+ * The styling properties for the red dot in the center of chin marker.
+ * @constant
+ * @type {React.CSSProperties}
+ */
 export const dotStyling: React.CSSProperties = {
   width: `${dotSize}px`,
   height: `${dotSize}px`,
   margin: `0 ${gap / 2}px`,
+};
+
+/**
+ * Calculates the center position of the chin marker.
+ * @param {Position} chinMarkerPosition - The current position of the chin marker
+ * (top-left).
+ * @returns {Position} The center of the red dot on the chin marker.
+ */
+export const getChinMarkerCenter = (chinMarkerPosition: Position): Position => {
+  const x = chinMarkerPosition.x + distanceToCenter + lineWidth;
+  const y = chinMarkerPosition.y + dotSize / 2;
+  return { x, y };
 };

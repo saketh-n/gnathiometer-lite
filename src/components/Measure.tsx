@@ -14,6 +14,7 @@ import {
   MeasureContext,
   MeasureContextProps,
 } from "../contexts/MeasureContext";
+import { Position, defaultPosition } from "../types/position";
 
 interface LocationState {
   image?: string;
@@ -35,9 +36,13 @@ export const Measure = (): React.JSX.Element => {
 
   const chinMarkerIndex = getChinMarkerIndex(instructions);
   const chinMarkerEnabled = instructionIndex >= chinMarkerIndex;
+  const [chinMarkerPosition, setChinMarkerPosition] =
+    useState<Position>(defaultPosition);
 
   const measureProps: MeasureContextProps = {
     chinMarkerEnabled,
+    chinMarkerPosition,
+    setChinMarkerPosition,
     instructionIndex,
     setInstructionIndex,
     rotation,

@@ -1,7 +1,10 @@
 import React from "react";
+import { Position, defaultPosition } from "../types/position";
 
 export type MeasureContextProps = {
   chinMarkerEnabled: boolean;
+  chinMarkerPosition: Position;
+  setChinMarkerPosition: React.Dispatch<React.SetStateAction<Position>>;
   instructionIndex: number;
   setInstructionIndex: React.Dispatch<React.SetStateAction<number>>;
   rotation: number;
@@ -12,6 +15,10 @@ export type MeasureContextProps = {
 
 const defaultContextValue = {
   chinMarkerEnabled: false,
+  chinMarkerPosition: defaultPosition,
+  setChinMarkerPosition: (() => {}) as React.Dispatch<
+    React.SetStateAction<Position>
+  >,
   instructionIndex: 0,
   setInstructionIndex: (() => {}) as React.Dispatch<
     React.SetStateAction<number>

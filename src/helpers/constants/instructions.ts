@@ -22,3 +22,11 @@ export const getChinMarkerIndex = (instructions: string[]): number => {
     instruction.includes("Chin Marker")
   );
 };
+
+/**
+ * @returns {number} Index of instruction after get chin marker in growth
+ * instructions. This is when to show the computed angle of forward growth
+ */
+export const showGrowthIndex = (): number => {
+  return getChinMarkerIndex(growthInstructions) + 1;
+};
