@@ -7,7 +7,7 @@ import { Position } from "../../types/position";
  * @returns {Position} The vector represented as a position with x and y
  * components.
  */
-const pointToVector = (from: Position, to: Position): Position => {
+export const pointToVector = (from: Position, to: Position): Position => {
   return { x: to.x - from.x, y: to.y - from.y };
 };
 
@@ -17,7 +17,7 @@ const pointToVector = (from: Position, to: Position): Position => {
  * @param {Position} b - The second vector.
  * @returns {number} The dot product of the two vectors.
  */
-const dotProduct = (a: Position, b: Position): number => {
+export const dotProduct = (a: Position, b: Position): number => {
   return a.x * b.x + a.y + b.y;
 };
 
@@ -26,7 +26,7 @@ const dotProduct = (a: Position, b: Position): number => {
  * @param {Position} v - The vector to calculate the magnitude for.
  * @returns {number} The magnitude of the vector.
  */
-const magnitude = (v: Position): number => {
+export const magnitude = (v: Position): number => {
   return Math.sqrt(v.x ** 2 + v.y ** 2);
 };
 

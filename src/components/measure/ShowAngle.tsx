@@ -4,7 +4,11 @@ import { MeasureContext } from "../../contexts/MeasureContext";
 
 import { getChinMarkerCenter } from "../../helpers/constants/chinMarker";
 import { growthPointX, zeroDegree } from "../../helpers/constants/growthGuide";
-import { computeAngle } from "../../helpers/utils/vector-utils";
+import {
+  computeAngle,
+  pointToVector,
+  magnitude,
+} from "../../helpers/utils/vector-utils";
 import {
   angleLabelColor,
   angleLabelFontSize,
@@ -39,8 +43,13 @@ export const ShowAngle = (): React.JSX.Element => {
 
   const angleLabelPosition = getAngleLabelPosition(chinMarkerCenter);
 
+  const angleLineMagnitude = magnitude(
+    pointToVector(growthPointX, chinMarkerCenter)
+  );
+
   return (
     <svg className="absolute top-0 left-0 h-full w-full z-10">
+      {/*Angle Line*/}
       <line
         x1={chinMarkerCenter.x}
         y1={chinMarkerCenter.y}
@@ -49,10 +58,11 @@ export const ShowAngle = (): React.JSX.Element => {
         stroke={angleLineColor}
         strokeWidth={lineWidth}
       />
+      {/*Zero Degree Line (X-Axis)*/}
       <line
         x1={growthPointX.x}
         y1={growthPointX.y}
-        x2={chinMarkerCenter.x}
+        x2={growthPointX.x + angleLineMagnitude}
         y2={zeroDegree.y}
         stroke={xAxisLineColor}
         strokeWidth={lineWidth}
