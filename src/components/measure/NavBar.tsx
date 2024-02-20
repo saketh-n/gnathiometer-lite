@@ -36,10 +36,12 @@ export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
     }
   };
 
+  const buttonStyle = "text-blue-600 hover:text-blue-800";
+
   return (
     <div className="z-10 relative flex items-center justify-between p-4 bg-gray-300 border-b border-gray-200">
       <button
-        className="text-blue-600 hover:text-blue-800"
+        className={buttonStyle}
         onClick={handleBack}
         data-testid="navbar-back"
       >
@@ -47,7 +49,7 @@ export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
       </button>
       <p className="text-sm text-gray-700">{instructions[index]}</p>
       <button
-        className="text-blue-600 hover:text-blue-800"
+        className={buttonStyle}
         onClick={handleNext}
         data-testid="navbar-next"
       >
