@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { NavBar } from "./NavBar";
 import { MemoryRouter } from "react-router-dom";
-import { growthInstructions as instructions } from "../../helpers/constants/instructions";
+import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
 import { MockMeasureProvider } from "../../contexts/MockMeasureContext";
 
 const priorRoute = "/upload-growth";

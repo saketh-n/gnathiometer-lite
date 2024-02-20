@@ -12,10 +12,8 @@ import {
   dotStyling,
   lineColor,
 } from "../../helpers/constants/chinMarker";
-import {
-  getComputeAngleIndex,
-  growthInstructions as instructions,
-} from "../../helpers/constants/instructions";
+import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
+import { getComputeAngleIndex } from "../../helpers/utils/instruction-utils";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 

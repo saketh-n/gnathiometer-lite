@@ -3,11 +3,11 @@ import { useContext } from "react";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 
+import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
 import {
   getHomeIndex,
   getPrintIndex,
-  growthInstructions as instructions,
-} from "../../helpers/constants/instructions";
+} from "../../helpers/utils/instruction-utils";
 
 type NavBarProps = {
   priorRoute: string;

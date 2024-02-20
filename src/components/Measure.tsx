@@ -6,10 +6,8 @@ import { ImageTransform } from "./measure/ImageTransform";
 import { NavBar } from "./measure/NavBar";
 import { PatientImage } from "./measure/PatientImage";
 
-import {
-  growthInstructions as instructions,
-  getChinMarkerIndex,
-} from "../helpers/constants/instructions";
+import { measureGrowthInstructions as instructions } from "../helpers/constants/instructions";
+import { getChinMarkerIndex } from "../helpers/utils/instruction-utils";
 import {
   MeasureContext,
   MeasureContextProps,
