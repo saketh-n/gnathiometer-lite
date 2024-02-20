@@ -12,7 +12,10 @@ import {
   dotStyling,
   lineColor,
 } from "../../helpers/constants/chinMarker";
-import { showGrowthIndex } from "../../helpers/constants/instructions";
+import {
+  getComputeAngleIndex,
+  growthInstructions as instructions,
+} from "../../helpers/constants/instructions";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 
@@ -41,6 +44,9 @@ export const ChinMarker = ({
   } = useContext(MeasureContext);
 
   const nodeRef = useRef<HTMLDivElement>(null);
+  // Only show the displayed angle once you are past the compute angle
+  // instruction
+  const showGrowthIndex = index > getComputeAngleIndex(instructions);
 
   /**
    * Handles the stop event of the draggable action, updating the marker's position.
@@ -87,7 +93,7 @@ export const ChinMarker = ({
           <div className={lineColor} style={rightLineStyling(rotation)}></div>
         </div>
       </Draggable>
-      {index >= showGrowthIndex() && <ShowAngle />}
+      {showGrowthIndex && <ShowAngle />}
     </div>
   );
 };

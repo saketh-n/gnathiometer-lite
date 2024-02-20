@@ -1,7 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { growthInstructions as instructions } from "../../helpers/constants/instructions";
 import { useContext } from "react";
+
 import { MeasureContext } from "../../contexts/MeasureContext";
+
+import {
+  getHomeIndex,
+  getPrintIndex,
+  growthInstructions as instructions,
+} from "../../helpers/constants/instructions";
 
 type NavBarProps = {
   priorRoute: string;
@@ -23,10 +29,14 @@ export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
     useContext(MeasureContext);
 
   const handleNext = () => {
+    if (index === getPrintIndex(instructions)) {
+      window.print();
+    } else if (index === getHomeIndex(instructions)) {
+      navigate("/");
+    }
+
     if (index < instructions.length - 1) {
       setIndex(index + 1);
-    } else {
-      window.print();
     }
   };
 
