@@ -33,8 +33,7 @@ export const ChinMarker = ({
 }: ChinMarkerProps): React.JSX.Element => {
   const containerStyle =
     "absolute top-0 left-0 w-full h-full z-1000 pointer-events-none";
-  const markerStyle =
-    "cursor-move pointer-events-auto absolute flex items-center justify-center";
+
   const {
     chinMarkerPosition: position,
     setChinMarkerPosition: setPosition,
@@ -45,6 +44,11 @@ export const ChinMarker = ({
   // Only show the displayed angle once you are past the compute angle
   // instruction
   const showGrowthIndex = index > getComputeAngleIndex(instructions);
+
+  // Once we show displayed angle, chinMarker should be fixed
+  const markerStyle = `${
+    !showGrowthIndex ? "cursor-move pointer-events-auto" : ""
+  } absolute flex items-center justify-center`;
 
   /**
    * Handles the stop event of the draggable action, updating the marker's position.
