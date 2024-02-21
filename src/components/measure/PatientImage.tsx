@@ -17,15 +17,11 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
   const { rotation, scalingFactor, chinMarkerEnabled } =
     useContext(MeasureContext);
 
-  const normalizedRotation = useMemo(() => {
-    return rotation % 360;
-  }, [rotation]);
-
   const imageStyle: React.CSSProperties = useMemo(() => {
     return {
-      transform: `rotate(${normalizedRotation}deg) scale(${scalingFactor})`,
+      transform: `rotate(${rotation}deg) scale(${scalingFactor})`,
     };
-  }, [normalizedRotation, scalingFactor]);
+  }, [rotation, scalingFactor]);
 
   const dragEnabled = chinMarkerEnabled ? "pointer-events-none" : "cursor-move";
 
