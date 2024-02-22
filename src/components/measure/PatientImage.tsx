@@ -1,9 +1,13 @@
 import Draggable from "react-draggable";
 import { useRef, useMemo, useContext } from "react";
+
+import { GrowthGuide } from "../measure/GrowthGuide";
+import { ImageTransform } from "../measure/ImageTransform";
+import { NavBar } from "../measure/NavBar";
 import { ImageNotFound } from "./ImageNotFound";
 import { MeasureContext } from "../../contexts/MeasureContext";
 
-type PatientImageProps = {
+export type PatientImageProps = {
   img?: string;
 };
 
@@ -37,16 +41,28 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
   }
 
   return (
-    <Draggable nodeRef={nodeRef}>
-      <div ref={nodeRef} className={`flex-shrink-0 absolute ${dragEnabled}`}>
-        <img
-          src={img}
-          alt="Patient"
-          style={imageStyle}
-          onDragStart={handleDragStart}
-          data-testid="patient-image"
-        />
+    <>
+      <NavBar priorRoute="/upload-growth" />
+      <div className="flex justify-center items-center">
+        <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
+          <GrowthGuide />
+          <ImageTransform />
+        </div>
+        <Draggable nodeRef={nodeRef}>
+          <div
+            ref={nodeRef}
+            className={`flex-shrink-0 absolute ${dragEnabled}`}
+          >
+            <img
+              src={img}
+              alt="Patient"
+              style={imageStyle}
+              onDragStart={handleDragStart}
+              data-testid="patient-image"
+            />
+          </div>
+        </Draggable>
       </div>
-    </Draggable>
+    </>
   );
 };

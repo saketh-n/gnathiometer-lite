@@ -1,9 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-
-import { GrowthGuide } from "./measure/GrowthGuide";
-import { ImageTransform } from "./measure/ImageTransform";
-import { NavBar } from "./measure/NavBar";
 import { PatientImage } from "./measure/PatientImage";
 
 import { measureGrowthInstructions as instructions } from "../helpers/constants/instructions";
@@ -51,16 +47,7 @@ export const Measure = (): React.JSX.Element => {
 
   return (
     <MeasureContext.Provider value={measureProps}>
-      <NavBar priorRoute="/upload-growth" />
-      <div className="flex justify-center items-center">
-        {imageSrc && (
-          <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
-            <GrowthGuide />
-            <ImageTransform />
-          </div>
-        )}
-        <PatientImage img={imageSrc} />
-      </div>
+      <PatientImage img={imageSrc} />
     </MeasureContext.Provider>
   );
 };
