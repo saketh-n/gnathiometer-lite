@@ -13,3 +13,6 @@ export const growthPointX: Position = { x: 279, y: 452 };
 
 // The vector from which we measure the growth angle
 export const zeroDegree: Position = { x: growthGuideWidth, y: growthPointX.y };
+
+// {0, 0} for determining the position of the Gnathion - manual measure
+export const growthOrigin: Position = { x: 462, y: 68 };

@@ -22,6 +22,16 @@ export const dotProduct = (a: Position, b: Position): number => {
 };
 
 /**
+ * Scales a 2D vector by a scaling factor.
+ * @param {Position} v - The vector to scale.
+ * @param {number} scalingFactor - The scaling factor.
+ * @returns {Position} The scaled vector.
+ */
+export const scaleVector = (v: Position, scalingFactor: number): Position => {
+  return { x: v.x * scalingFactor, y: v.y * scalingFactor };
+};
+
+/**
  * Calculates the magnitude (length) of a vector.
  * @param {Position} v - The vector to calculate the magnitude for.
  * @returns {number} The magnitude of the vector.

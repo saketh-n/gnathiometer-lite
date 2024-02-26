@@ -17,7 +17,7 @@ import { getComputeAngleIndex } from "../../helpers/utils/instruction-utils";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 
-import { ShowAngle } from "./ShowAngle";
+import { ShowMeasurements } from "./ShowMeasurements";
 
 type ChinMarkerProps = {
   rotation?: number;
@@ -95,7 +95,7 @@ export const ChinMarker = ({
           <div className={lineColor} style={rightLineStyling(rotation)}></div>
         </div>
       </Draggable>
-      {showGrowthIndex && <ShowAngle />}
+      {showGrowthIndex && <ShowMeasurements />}
     </div>
   );
 };

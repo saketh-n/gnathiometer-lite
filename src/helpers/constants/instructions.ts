@@ -6,7 +6,7 @@ export const measureGrowthInstructions = [
   "Superimpose the Patient Image on Point N",
   "Rotate the Patient Image so that Point F touches the soft tissue of the forehead above",
   "Place the Chin Marker on the Gnathion (forwardmost and downwardmost point on the Chin)",
-  "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle",
+  "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle & Gnathion Position",
   "Press Next to Print Results",
   "Press Next to Return Home",
 ];
