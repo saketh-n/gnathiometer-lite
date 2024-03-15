@@ -2,6 +2,7 @@ import { Home } from "./pages/Home";
 import { UploadGrowth } from "./pages/UploadGrowth";
 import { MeasureGrowth } from "./pages/MeasureGrowth";
 import { NotFound } from "./pages/NotFound";
+import { UploadImprovement } from "./pages/UploadImprovement";
 
 export const routesConfig = [
   {
@@ -17,6 +18,13 @@ export const routesConfig = [
     title: "Upload Growth",
     about:
       "Provides instructions and the ability to upload patient image for measuring growth",
+  },
+  {
+    path: "/upload-improvement",
+    component: UploadImprovement,
+    title: "Upload Improvement",
+    about:
+      "Provides instructions and the ability to upload patient image for measuring improvement",
   },
   {
     path: "/measure-growth",
