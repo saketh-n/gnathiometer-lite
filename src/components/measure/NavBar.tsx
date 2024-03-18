@@ -10,7 +10,7 @@ import {
 } from "../../helpers/utils/instruction-utils";
 
 type NavBarProps = {
-  priorRoute: string;
+  priorRoute?: string;
 };
 
 /**
@@ -22,7 +22,9 @@ type NavBarProps = {
  * @returns {React.JSX.Element} A navigation bar with back and forward buttons
  * and a central text.
  */
-export const NavBar = ({ priorRoute }: NavBarProps): React.JSX.Element => {
+export const NavBar = ({
+  priorRoute = "/",
+}: NavBarProps): React.JSX.Element => {
   const navigate = useNavigate();
 
   const { instructionIndex: index, setInstructionIndex: setIndex } =

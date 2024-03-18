@@ -42,7 +42,7 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
 
   return (
     <>
-      <NavBar priorRoute="/upload-growth" />
+      <NavBar />
       <div className="flex justify-center items-center">
         <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
           <GrowthGuide />
