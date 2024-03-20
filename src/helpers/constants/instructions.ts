@@ -3,8 +3,7 @@ export const measureGrowthInstructions = [
   "Align Point F & N on the Growth Guide with the Patient Image",
   "Place the Chin Marker on the Gnathion (forwardmost and downwardmost point on the Chin)",
   "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle & Gnathion Position",
-  "Press Next to Print Results",
-  "Press Next to Return Home",
+  "Image Locked (Go back to Adjust)",
 ];
 
 export const uploadGrowthInstructions = [

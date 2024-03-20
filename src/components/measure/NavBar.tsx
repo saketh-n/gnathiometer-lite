@@ -4,10 +4,7 @@ import { useContext } from "react";
 import { MeasureContext } from "../../contexts/MeasureContext";
 
 import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
-import {
-  getHomeIndex,
-  getPrintIndex,
-} from "../../helpers/utils/instruction-utils";
+import { isFinalInstruction } from "../../helpers/utils/instruction-utils";
 
 type NavBarProps = {
   priorRoute?: string;
@@ -31,13 +28,7 @@ export const NavBar = ({
     useContext(MeasureContext);
 
   const handleNext = () => {
-    if (index === getPrintIndex(instructions)) {
-      window.print();
-    } else if (index === getHomeIndex(instructions)) {
-      navigate("/");
-    }
-
-    if (index < instructions.length - 1) {
+    if (!isFinalInstruction(index, instructions)) {
       setIndex(index + 1);
     }
   };
@@ -51,6 +42,9 @@ export const NavBar = ({
   };
 
   const buttonStyle = "text-blue-600 hover:text-blue-800";
+  const nextButtonStyle = isFinalInstruction(index, instructions)
+    ? "text-blue-600 opacity-50 cursor-not-allowed"
+    : buttonStyle;
 
   return (
     <div className="z-10 relative flex items-center justify-between p-4 bg-gray-300 border-b border-gray-200">
@@ -63,7 +57,7 @@ export const NavBar = ({
       </button>
       <p className="text-sm text-gray-700">{instructions[index]}</p>
       <button
-        className={buttonStyle}
+        className={nextButtonStyle}
         onClick={handleNext}
         data-testid="navbar-next"
       >

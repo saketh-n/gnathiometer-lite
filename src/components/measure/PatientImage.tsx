@@ -2,10 +2,10 @@ import Draggable from "react-draggable";
 import { useRef, useMemo, useContext } from "react";
 
 import { GrowthGuide } from "../measure/GrowthGuide";
-import { ImageTransform } from "../measure/ImageTransform";
 import { NavBar } from "../measure/NavBar";
 import { ImageNotFound } from "./ImageNotFound";
 import { MeasureContext } from "../../contexts/MeasureContext";
+import { MgmtBoard } from "./boards/MgmtBoard";
 
 export type PatientImageProps = {
   img?: string;
@@ -46,7 +46,7 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
       <div className="flex justify-center items-center">
         <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
           <GrowthGuide />
-          <ImageTransform />
+          <MgmtBoard />
         </div>
         <Draggable nodeRef={nodeRef}>
           <div

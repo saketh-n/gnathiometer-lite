@@ -31,23 +31,14 @@ export const getComputeAngleIndex = (instructions: string[]): number => {
 };
 
 /**
- * Finds the index of the first instruction referring to print
- * When pressing next on this instruction, triggers print
  *
- * @param {string[]} instructions - Instructions to look through.
- * @returns {number} The index of the instruction containing "Print", or -1 if not found.
+ * @param index The current instruction you're on
+ * @param instructions List of instructions to check
+ * @returns Whether the index is of the final instruction
  */
-export const getPrintIndex = (instructions: string[]): number => {
-  return getInstructionIndex(instructions, "Print");
-};
-
-/**
- * Finds the index of the first instruction referring to home
- * When pressing next on this instruction, triggers return home
- *
- * @param {string[]} instructions - Instructions to look through.
- * @returns {number} The index of the instruction containing "Home", or -1 if not found.
- */
-export const getHomeIndex = (instructions: string[]): number => {
-  return getInstructionIndex(instructions, "Home");
+export const isFinalInstruction = (
+  index: number,
+  instructions: string[]
+): boolean => {
+  return !(index < instructions.length - 1);
 };
