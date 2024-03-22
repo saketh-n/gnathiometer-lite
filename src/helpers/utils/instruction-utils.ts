@@ -23,14 +23,6 @@ export const getChinMarkerIndex = (instructions: string[]): number => {
 };
 
 /**
- * @param {string[]} instructions - Instructions to look through.
- * @returns {number} Index of instruction that contains `compute Angle`
- */
-export const getComputeAngleIndex = (instructions: string[]): number => {
-  return getInstructionIndex(instructions, "compute Angle");
-};
-
-/**
  *
  * @param index The current instruction you're on
  * @param instructions List of instructions to check

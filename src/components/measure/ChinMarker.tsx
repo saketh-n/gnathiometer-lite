@@ -13,7 +13,7 @@ import {
   lineColor,
 } from "../../helpers/constants/chinMarker";
 import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
-import { getComputeAngleIndex } from "../../helpers/utils/instruction-utils";
+import { isFinalInstruction } from "../../helpers/utils/instruction-utils";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 
@@ -43,7 +43,7 @@ export const ChinMarker = ({
   const nodeRef = useRef<HTMLDivElement>(null);
   // Only show the displayed angle once you are past the compute angle
   // instruction
-  const showGrowthIndex = index > getComputeAngleIndex(instructions);
+  const showGrowthIndex = isFinalInstruction(index, instructions);
 
   // Once we show displayed angle, chinMarker should be fixed
   const markerStyle = `${
