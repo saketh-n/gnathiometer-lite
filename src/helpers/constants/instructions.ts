@@ -1,9 +1,9 @@
 export const measureGrowthInstructions = [
   "Scale the Image Properly (By Matching the 5 CM Marker on the Image w/ the Growth Guide)",
   "Align Point F & N on the Growth Guide with the Patient Image",
-  "Place the Chin Marker on the Gnathion (forwardmost and downwardmost point on the Chin)",
+  "Image Locked, place Chin Marker on Gnathion (forwardmost and downwardmost point on the Chin)",
   "Ensure everything looks good, otherwise go back to fix it, click Next to compute Angle & Gnathion Position",
-  "Image Locked (Go back to Adjust)",
+  "Chin Marker Locked (Go back to Adjust)",
 ];
 
 export const uploadGrowthInstructions = [

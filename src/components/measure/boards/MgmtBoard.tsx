@@ -7,8 +7,7 @@ import { measureGrowthInstructions as instructions } from "../../../helpers/cons
 import { ResultMgmt } from "./ResultMgmt";
 
 export const MgmtBoard = (): React.JSX.Element => {
-  const { chinMarkerEnabled, instructionIndex: index } =
-    useContext(MeasureContext);
+  const { instructionIndex: index } = useContext(MeasureContext);
   const finalInstruction = isFinalInstruction(index, instructions);
 
   const boardChild: React.JSX.Element = finalInstruction ? (
@@ -16,7 +15,5 @@ export const MgmtBoard = (): React.JSX.Element => {
   ) : (
     <ImageTransform />
   );
-  return (
-    <Board enabled={finalInstruction || !chinMarkerEnabled}>{boardChild}</Board>
-  );
+  return <Board>{boardChild}</Board>;
 };

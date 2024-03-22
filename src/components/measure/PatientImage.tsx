@@ -6,6 +6,8 @@ import { NavBar } from "../measure/NavBar";
 import { ImageNotFound } from "./ImageNotFound";
 import { MeasureContext } from "../../contexts/MeasureContext";
 import { MgmtBoard } from "./boards/MgmtBoard";
+import { isFinalInstruction } from "../../helpers/utils/instruction-utils";
+import { measureGrowthInstructions as instructions } from "../../helpers/constants/instructions";
 
 export type PatientImageProps = {
   img?: string;
@@ -18,8 +20,12 @@ export type PatientImageProps = {
  * If image value is invalid, returns no image found
  */
 export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
-  const { rotation, scalingFactor, chinMarkerEnabled } =
-    useContext(MeasureContext);
+  const {
+    rotation,
+    scalingFactor,
+    chinMarkerEnabled,
+    instructionIndex: index,
+  } = useContext(MeasureContext);
 
   const imageStyle: React.CSSProperties = useMemo(() => {
     return {
@@ -36,6 +42,8 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
 
   const nodeRef = useRef(null);
 
+  const finalInstruction = isFinalInstruction(index, instructions);
+
   if (!img) {
     return <ImageNotFound route="/measure-growth" />;
   }
@@ -46,7 +54,6 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
       <div className="flex justify-center items-center">
         <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
           <GrowthGuide />
-          <MgmtBoard />
         </div>
         <Draggable nodeRef={nodeRef}>
           <div
@@ -62,6 +69,10 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
             />
           </div>
         </Draggable>
+      </div>
+      <div className="z-10 relative">
+        {/*Image is locked so no need for the Board*/}
+        {(!chinMarkerEnabled || finalInstruction) && <MgmtBoard />}
       </div>
     </>
   );
