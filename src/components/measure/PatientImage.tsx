@@ -48,7 +48,7 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
   }
 
   return (
-    <>
+    <div className="flex flex-col">
       <div className="flex justify-center items-center">
         <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
           <GrowthGuide />
@@ -72,6 +72,6 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
         {/*Image is locked so no need for the Board*/}
         {(!chinMarkerEnabled || finalInstruction) && <MgmtBoard />}
       </div>
-    </>
+    </div>
   );
 };

@@ -65,14 +65,16 @@ export const Measure = (): React.JSX.Element => {
       >
         <NavBar />
       </MeasureContext.Provider>
-      <MeasureContext.Provider value={beforeMeasureContext}>
-        <PatientImage img={imageSrc} />
-      </MeasureContext.Provider>
-      {afterImgSrc && (
-        <MeasureContext.Provider value={afterMeasureContext}>
-          <PatientImage img={afterImgSrc} />
+      <div className="flex justify-center items-center flex-row space-x-8">
+        <MeasureContext.Provider value={beforeMeasureContext}>
+          <PatientImage img={imageSrc} />
         </MeasureContext.Provider>
-      )}
+        {afterImgSrc && (
+          <MeasureContext.Provider value={afterMeasureContext}>
+            <PatientImage img={afterImgSrc} />
+          </MeasureContext.Provider>
+        )}
+      </div>
     </>
   );
 };
