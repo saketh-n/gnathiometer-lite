@@ -13,6 +13,7 @@ export type MeasureContextProps = {
   setScalingFactor: React.Dispatch<React.SetStateAction<number>>;
   afterImgSrc?: null | string;
   setAfterImgSrc?: React.Dispatch<React.SetStateAction<null | string>>;
+  after?: boolean;
 };
 
 const defaultContextValue = {

@@ -25,7 +25,10 @@ export const Measure = (): React.JSX.Element => {
   const { state } = useLocation();
   const imageSrc = (state as LocationState)?.image;
 
-  const useMeasureContext = (): MeasureContextProps => {
+  const useMeasureContext = (
+    after?: boolean,
+    setBeforeImgSrc?: React.Dispatch<React.SetStateAction<null | string>>
+  ): MeasureContextProps => {
     const chinMarkerIndex = getChinMarkerIndex(instructions);
 
     const [rotation, setRotation] = useState<number>(0);
@@ -48,13 +51,21 @@ export const Measure = (): React.JSX.Element => {
       setScalingFactor,
       afterImgSrc,
       setAfterImgSrc,
+      after,
     };
+
+    if (after) {
+      measureProps.setAfterImgSrc = setBeforeImgSrc;
+    }
 
     return measureProps;
   };
 
   const beforeMeasureContext: MeasureContextProps = useMeasureContext();
-  const afterMeasureContext: MeasureContextProps = useMeasureContext();
+  const afterMeasureContext: MeasureContextProps = useMeasureContext(
+    true,
+    beforeMeasureContext.setAfterImgSrc
+  );
 
   const { afterImgSrc } = beforeMeasureContext;
 

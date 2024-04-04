@@ -24,8 +24,12 @@ export const NavBar = ({
 }: NavBarProps): React.JSX.Element => {
   const navigate = useNavigate();
 
-  const { instructionIndex: index, setInstructionIndex: setIndex } =
-    useContext(MeasureContext);
+  const {
+    instructionIndex: index,
+    setInstructionIndex: setIndex,
+    after,
+    setAfterImgSrc: setPriorImg,
+  } = useContext(MeasureContext);
 
   const handleNext = () => {
     if (!isFinalInstruction(index, instructions)) {
@@ -37,7 +41,11 @@ export const NavBar = ({
     if (index > 0) {
       setIndex(index - 1);
     } else {
-      navigate(priorRoute);
+      if (after) {
+        setPriorImg?.(null);
+      } else {
+        navigate(priorRoute);
+      }
     }
   };
 
