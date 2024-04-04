@@ -4,7 +4,7 @@ import { useContext, useRef } from "react";
 import { MeasureContext } from "../../../contexts/MeasureContext";
 
 export const ResultMgmt = (): React.JSX.Element => {
-  const { setAfterImgSrc } = useContext(MeasureContext);
+  const { setAfterImgSrc, after } = useContext(MeasureContext);
   const buttonStyle =
     "w-1/3 aspect-square py-2 px-4 bg-gray-200 border-2 border-gray-400 text-black font-semibold rounded-xl hover:bg-gray-300";
   const navigate = useNavigate();
@@ -47,14 +47,16 @@ export const ResultMgmt = (): React.JSX.Element => {
       />
       <HoverButton
         tailwindStyle={buttonStyle}
-        text="Upload New Image"
+        text="Start Over"
         click={newImageClick}
       />
-      <HoverButton
-        tailwindStyle={buttonStyle}
-        text="Upload After Image"
-        click={uploadAfterClick}
-      />
+      {!after && (
+        <HoverButton
+          tailwindStyle={buttonStyle}
+          text="Upload After Image"
+          click={uploadAfterClick}
+        />
+      )}
       <input
         type="file"
         accept="image/*"
