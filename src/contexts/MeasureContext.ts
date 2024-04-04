@@ -11,6 +11,8 @@ export type MeasureContextProps = {
   setRotation: React.Dispatch<React.SetStateAction<number>>;
   scalingFactor: number;
   setScalingFactor: React.Dispatch<React.SetStateAction<number>>;
+  afterImgSrc?: null | string;
+  setAfterImgSrc?: React.Dispatch<React.SetStateAction<null | string>>;
 };
 
 const defaultContextValue = {

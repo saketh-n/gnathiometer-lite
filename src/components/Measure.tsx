@@ -25,31 +25,54 @@ export const Measure = (): React.JSX.Element => {
   const { state } = useLocation();
   const imageSrc = (state as LocationState)?.image;
 
-  const [rotation, setRotation] = useState<number>(0);
-  const [scalingFactor, setScalingFactor] = useState<number>(1.0);
-  const [instructionIndex, setInstructionIndex] = useState<number>(0);
+  const useMeasureContext = (): MeasureContextProps => {
+    const chinMarkerIndex = getChinMarkerIndex(instructions);
 
-  const chinMarkerIndex = getChinMarkerIndex(instructions);
-  const chinMarkerEnabled = instructionIndex >= chinMarkerIndex;
-  const [chinMarkerPosition, setChinMarkerPosition] =
-    useState<Position>(defaultPosition);
+    const [rotation, setRotation] = useState<number>(0);
+    const [scalingFactor, setScalingFactor] = useState<number>(1.0);
+    const [instructionIndex, setInstructionIndex] = useState<number>(0);
+    const chinMarkerEnabled = instructionIndex >= chinMarkerIndex;
+    const [chinMarkerPosition, setChinMarkerPosition] =
+      useState<Position>(defaultPosition);
+    const [afterImgSrc, setAfterImgSrc] = useState<null | string>(null);
 
-  const measureProps: MeasureContextProps = {
-    chinMarkerEnabled,
-    chinMarkerPosition,
-    setChinMarkerPosition,
-    instructionIndex,
-    setInstructionIndex,
-    rotation,
-    setRotation,
-    scalingFactor,
-    setScalingFactor,
+    const measureProps: MeasureContextProps = {
+      chinMarkerEnabled,
+      chinMarkerPosition,
+      setChinMarkerPosition,
+      instructionIndex,
+      setInstructionIndex,
+      rotation,
+      setRotation,
+      scalingFactor,
+      setScalingFactor,
+      afterImgSrc,
+      setAfterImgSrc,
+    };
+
+    return measureProps;
   };
 
+  const beforeMeasureContext: MeasureContextProps = useMeasureContext();
+  const afterMeasureContext: MeasureContextProps = useMeasureContext();
+
+  const { afterImgSrc } = beforeMeasureContext;
+
   return (
-    <MeasureContext.Provider value={measureProps}>
-      <NavBar />
-      <PatientImage img={imageSrc} />
-    </MeasureContext.Provider>
+    <>
+      <MeasureContext.Provider
+        value={afterImgSrc ? afterMeasureContext : beforeMeasureContext}
+      >
+        <NavBar />
+      </MeasureContext.Provider>
+      <MeasureContext.Provider value={beforeMeasureContext}>
+        <PatientImage img={imageSrc} />
+      </MeasureContext.Provider>
+      {afterImgSrc && (
+        <MeasureContext.Provider value={afterMeasureContext}>
+          <PatientImage img={afterImgSrc} />
+        </MeasureContext.Provider>
+      )}
+    </>
   );
 };
