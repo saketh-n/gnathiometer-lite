@@ -2,7 +2,6 @@ import Draggable from "react-draggable";
 import { useRef, useMemo, useContext } from "react";
 
 import { GrowthGuide } from "../measure/GrowthGuide";
-import { NavBar } from "../measure/NavBar";
 import { ImageNotFound } from "./ImageNotFound";
 import { MeasureContext } from "../../contexts/MeasureContext";
 import { MgmtBoard } from "./boards/MgmtBoard";
@@ -50,7 +49,6 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
 
   return (
     <>
-      <NavBar />
       <div className="flex justify-center items-center">
         <div className="z-10 flex-shrink-0 relative pointer-events-none user-select-none">
           <GrowthGuide />

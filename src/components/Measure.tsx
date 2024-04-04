@@ -9,6 +9,7 @@ import {
   MeasureContextProps,
 } from "../contexts/MeasureContext";
 import { Position, defaultPosition } from "../types/position";
+import { NavBar } from "./measure/NavBar";
 
 interface LocationState {
   image?: string;
@@ -47,6 +48,7 @@ export const Measure = (): React.JSX.Element => {
 
   return (
     <MeasureContext.Provider value={measureProps}>
+      <NavBar />
       <PatientImage img={imageSrc} />
     </MeasureContext.Provider>
   );
