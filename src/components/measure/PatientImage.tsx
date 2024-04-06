@@ -1,5 +1,5 @@
 import Draggable from "react-draggable";
-import { useRef, useMemo, useContext } from "react";
+import { useRef, useMemo, useContext, useCallback } from "react";
 
 import { GrowthGuide } from "../measure/GrowthGuide";
 import { ImageNotFound } from "./ImageNotFound";
@@ -32,6 +32,18 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
     };
   }, [rotation, scalingFactor]);
 
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  const handleImageLoad = useCallback(() => {
+    if (imgRef.current) {
+      const scaledWidth = imgRef.current.naturalWidth * scalingFactor;
+      const scaledHeight = imgRef.current.naturalHeight * scalingFactor;
+
+      imgRef.current.style.minWidth = `${scaledWidth}px`;
+      imgRef.current.style.minHeight = `${scaledHeight}px`;
+    }
+  }, [scalingFactor]);
+
   const dragEnabled = chinMarkerEnabled ? "pointer-events-none" : "cursor-move";
 
   const handleDragStart = (event: React.DragEvent<HTMLImageElement>) => {
@@ -54,15 +66,14 @@ export const PatientImage = ({ img }: PatientImageProps): React.JSX.Element => {
           <GrowthGuide />
         </div>
         <Draggable nodeRef={nodeRef}>
-          <div
-            ref={nodeRef}
-            className={`flex-shrink-0 absolute ${dragEnabled}`}
-          >
+          <div ref={nodeRef} className={`absolute ${dragEnabled}`}>
             <img
+              ref={imgRef}
               src={img}
               alt="Patient"
               style={imageStyle}
               onDragStart={handleDragStart}
+              onLoad={handleImageLoad}
               data-testid="patient-image"
             />
           </div>
