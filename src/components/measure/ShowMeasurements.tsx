@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { MeasureContext } from "../../contexts/MeasureContext";
 
@@ -19,16 +19,24 @@ import { getMeasurementValues } from "../../helpers/utils/measurement-utils";
  * gnathion (angle + position)
  */
 export const ShowMeasurements = (): React.JSX.Element => {
-  const { chinMarkerPosition } = useContext(MeasureContext);
+  const { chinMarkerPosition, setGnathionAngle, setGnathionMM } =
+    useContext(MeasureContext);
 
   const {
     chinMarkerCenter,
     angleLabel,
     angleLineMagnitude,
     angleLabelPosition,
+    gnathionPosition,
     gnathionLabelPosition,
     gnathionPositionLabel,
+    angle,
   } = getMeasurementValues(chinMarkerPosition);
+
+  useEffect(() => {
+    setGnathionAngle?.(angle);
+    setGnathionMM?.(gnathionPosition);
+  }, [angle, gnathionPosition, setGnathionAngle, setGnathionMM]);
 
   return (
     <svg className="absolute top-0 left-0 h-full w-full z-10">

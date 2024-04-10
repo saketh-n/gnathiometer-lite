@@ -25,6 +25,7 @@ type MeasurementValues = {
   gnathionPosition: Position;
   gnathionLabelPosition: Position;
   gnathionPositionLabel: string;
+  angle: number;
 };
 
 /**
@@ -37,7 +38,8 @@ export const getMeasurementValues = (
   chinMarkerPosition: Position
 ): MeasurementValues => {
   const chinMarkerCenter = getChinMarkerCenter(chinMarkerPosition);
-  const angleLabel = `${getAngle(chinMarkerCenter).toFixed(2)}°`;
+  const angle = getAngle(chinMarkerCenter);
+  const angleLabel = `${angle.toFixed(2)}°`;
 
   const angleLabelPosition = getAngleLabelPosition(chinMarkerCenter);
 
@@ -58,6 +60,7 @@ export const getMeasurementValues = (
     gnathionPosition,
     gnathionLabelPosition,
     gnathionPositionLabel,
+    angle,
   };
 };
 
@@ -137,4 +140,24 @@ export const getGnathionPositionLabel = (
   return `Gnathion Position (Horizontal: 
     ${gnathionPosition.x.toFixed(2)} MM, Vertical: 
     ${gnathionPosition.y.toFixed(2)} MM)`;
+};
+
+export const getAngleImprovementLabel = (
+  beforeAngle?: number,
+  afterAngle?: number
+): string => {
+  return beforeAngle && afterAngle
+    ? `Angle Improvement: ${(afterAngle - beforeAngle).toFixed(2)}°`
+    : ``;
+};
+
+export const getGnathionImprovementLabel = (
+  before?: Position,
+  after?: Position
+): string => {
+  return before && after
+    ? `Gnathion Improvement (Horizontal: ${(after.x - before.x).toFixed(
+        2
+      )} MM, Vertical: ${(after.y - before.y).toFixed(2)} MM)`
+    : ``;
 };

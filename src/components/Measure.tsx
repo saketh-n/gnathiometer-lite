@@ -2,14 +2,24 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { PatientImage } from "./measure/PatientImage";
 
-import { measureGrowthInstructions as instructions } from "../helpers/constants/instructions";
-import { getChinMarkerIndex } from "../helpers/utils/instruction-utils";
+import {
+  measureGrowthInstructions as instructions,
+  measureGrowthInstructions,
+} from "../helpers/constants/instructions";
+import {
+  getChinMarkerIndex,
+  isFinalInstruction,
+} from "../helpers/utils/instruction-utils";
 import {
   MeasureContext,
   MeasureContextProps,
 } from "../contexts/MeasureContext";
 import { Position, defaultPosition } from "../types/position";
 import { NavBar } from "./measure/NavBar";
+import {
+  getAngleImprovementLabel,
+  getGnathionImprovementLabel,
+} from "../helpers/utils/measurement-utils";
 
 interface LocationState {
   image?: string;
@@ -38,6 +48,8 @@ export const Measure = (): React.JSX.Element => {
     const [chinMarkerPosition, setChinMarkerPosition] =
       useState<Position>(defaultPosition);
     const [afterImgSrc, setAfterImgSrc] = useState<null | string>(null);
+    const [gnathionAngle, setGnathionAngle] = useState(0);
+    const [gnathionMM, setGnathionMM] = useState<Position>(defaultPosition);
 
     const measureProps: MeasureContextProps = {
       chinMarkerEnabled,
@@ -52,6 +64,10 @@ export const Measure = (): React.JSX.Element => {
       afterImgSrc,
       setAfterImgSrc,
       after,
+      gnathionAngle,
+      setGnathionAngle,
+      gnathionMM,
+      setGnathionMM,
     };
 
     if (after) {
@@ -68,6 +84,10 @@ export const Measure = (): React.JSX.Element => {
   );
 
   const { afterImgSrc } = beforeMeasureContext;
+  const finalInstruction = isFinalInstruction(
+    afterMeasureContext.instructionIndex,
+    measureGrowthInstructions
+  );
 
   return (
     <>
@@ -86,6 +106,24 @@ export const Measure = (): React.JSX.Element => {
           </MeasureContext.Provider>
         )}
       </div>
+      {finalInstruction && (
+        <div className="flex justify-center items-center flex-row space-x-8 text-3xl">
+          <div className="flex flex-col z-40">
+            <div>
+              {getAngleImprovementLabel(
+                beforeMeasureContext.gnathionAngle,
+                afterMeasureContext.gnathionAngle
+              )}
+            </div>
+            <div>
+              {getGnathionImprovementLabel(
+                beforeMeasureContext.gnathionMM,
+                afterMeasureContext.gnathionMM
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 };

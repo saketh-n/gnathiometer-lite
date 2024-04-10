@@ -14,6 +14,10 @@ export type MeasureContextProps = {
   afterImgSrc?: null | string;
   setAfterImgSrc?: React.Dispatch<React.SetStateAction<null | string>>;
   after?: boolean;
+  gnathionAngle?: number;
+  setGnathionAngle?: React.Dispatch<React.SetStateAction<number>>;
+  gnathionMM?: Position;
+  setGnathionMM?: React.Dispatch<React.SetStateAction<Position>>;
 };
 
 const defaultContextValue = {
